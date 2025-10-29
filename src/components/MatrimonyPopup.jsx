@@ -6,7 +6,8 @@ export default function MatrimonyPopup() {
   const PLAIN_PHONE = "7838500048";
   const EMAIL = "sycoriaanteam@gmail.com";
   const COMPANY = "elite matrimony services";
-  const ADDRESS = "Safdarjung Enclave";
+  const ADDRESS =
+    "Safdarjung Enclave";
 
   const [show, setShow] = useState(false);
 
@@ -30,11 +31,13 @@ export default function MatrimonyPopup() {
       <div className="hidden md:flex fixed inset-0 z-50 items-center justify-center px-6">
         <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
           <div className="flex gap-4 p-6">
+            {/* ✅ Logo fully visible */}
             <img
               src={logo}
               alt="logo"
-              className="w-20 h-20 rounded-lg object-cover"
+              className="w-24 h-24 rounded-xl object-contain bg-white p-2 border"
             />
+
             <div className="flex-1">
               <div className="flex items-start justify-between">
                 <div>
@@ -61,7 +64,7 @@ export default function MatrimonyPopup() {
                   </div>
                 </div>
               </div>
-
+              <p className="text-sm text-gray-600 mt-3">{PHONE}</p>
               <p className="text-sm text-gray-600 mt-3">{ADDRESS}</p>
 
               <div className="mt-5 flex flex-col gap-3 items-start">
@@ -83,14 +86,16 @@ export default function MatrimonyPopup() {
         </div>
       </div>
 
-      {/* Mobile popup at bottom */}
+      {/* Mobile popup */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg rounded-t-2xl p-4 animate-slide-up">
         <div className="flex gap-3 items-start">
+          {/* ✅ Logo fully visible on mobile too */}
           <img
             src={logo}
             alt="logo"
-            className="w-14 h-14 rounded-lg object-cover"
+            className="w-16 h-16 rounded-xl object-contain bg-white p-1 border"
           />
+
           <div className="flex-1">
             <div className="flex items-center justify-between">
               <div>
@@ -126,12 +131,6 @@ export default function MatrimonyPopup() {
               >
                 Call
               </a>
-              {/* <a
-                href={`mailto:${EMAIL}`}
-                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full text-sm font-medium bg-pink-50 text-pink-600 border border-pink-100 hover:bg-pink-100 transition-all"
-              >
-                Email
-              </a> */}
               <button
                 onClick={handleClose}
                 className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full text-sm font-medium bg-white text-teal-600 border border-teal-200 hover:bg-teal-50 transition-all"
