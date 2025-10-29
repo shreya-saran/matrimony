@@ -26,12 +26,6 @@ export default function Navbar() {
               Home
             </a>
             <a
-              href="#about"
-              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition transform hover:-translate-y-0.5"
-            >
-              About Us
-            </a>
-            <a
               href="#services"
               className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition transform hover:-translate-y-0.5"
             >
@@ -44,14 +38,26 @@ export default function Navbar() {
               Success Stories
             </a>
             <a
+              href="#testimonials"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition transform hover:-translate-y-0.5"
+            >
+              Testimonial
+            </a>
+            <a
+              href="#clients"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition transform hover:-translate-y-0.5"
+            >
+              Clients
+            </a>
+            <a
               href="#contact"
               className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition transform hover:-translate-y-0.5"
             >
-              Contact
+              Contact Us
             </a>
 
             <a
-              href="/register"
+              href="#register"
               className="ml-4 inline-flex items-center px-6 py-2 rounded-full bg-gradient-to-r from-[#CFA85C] to-[#E6BE8A] text-[#8B0000] font-semibold shadow-md hover:shadow-lg hover:from-[#E6BE8A] hover:to-[#CFA85C] transition"
             >
               Register Now
@@ -118,13 +124,6 @@ export default function Navbar() {
             Home
           </a>
           <a
-            href="#about"
-            onClick={() => setOpen(false)}
-            className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
-          >
-            About Us
-          </a>
-          <a
             href="#services"
             onClick={() => setOpen(false)}
             className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
@@ -139,15 +138,27 @@ export default function Navbar() {
             Success Stories
           </a>
           <a
+              href="#testimonials"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition transform hover:-translate-y-0.5"
+            >
+              Testimonials
+          </a>
+          <a
+              href="#clients"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition transform hover:-translate-y-0.5"
+            >
+              Clients
+            </a>
+          <a
             href="#contact"
             onClick={() => setOpen(false)}
             className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
           >
-            Contact
+            Contact Us
           </a>
 
           <a
-            href="/register"
+            href="#register"
             className="mt-3 inline-flex justify-center items-center px-6 py-2 rounded-full bg-gradient-to-r from-[#CFA85C] to-[#E6BE8A] text-[#8B0000] font-semibold shadow hover:from-[#E6BE8A] hover:to-[#CFA85C] transition"
           >
             Register Now

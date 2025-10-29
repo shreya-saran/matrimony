@@ -1,6 +1,4 @@
 import React from "react";
-
-// ✅ Explicit imports for all 30 logos
 import logo1 from "../assets/logos/1.png";
 import logo2 from "../assets/logos/2.png";
 import logo3 from "../assets/logos/3.png";
