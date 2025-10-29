@@ -19,24 +19,52 @@ const Testimonials = () => {
   const swiperRef = useRef(null);
   const videoRefs = useRef([]);
 
+  // helper: are any videos currently playing?
+  const anyVideoPlaying = () => {
+    return videoRefs.current.some((v) => v && !v.paused && !v.ended);
+  };
+
+  // when a video is played
   const handlePlay = (index) => {
-    // Stop all other videos
+    // pause all other videos
     videoRefs.current.forEach((video, i) => {
       if (i !== index && video && !video.paused) {
-        video.pause();
+        try {
+          video.pause();
+        } catch (e) {
+          /* ignore */
+        }
       }
     });
 
-    // Pause autoplay while a video is playing
-    if (swiperRef.current) {
-      swiperRef.current.autoplay.stop();
+    // stop swiper autoplay while a video is playing
+    if (swiperRef.current && swiperRef.current.autoplay) {
+      try {
+        swiperRef.current.autoplay.stop();
+      } catch (e) {
+        /* ignore */
+      }
     }
   };
 
-  const handlePause = () => {
-    // Resume autoplay when the video is paused
-    if (swiperRef.current) {
-      swiperRef.current.autoplay.start();
+  // when a video is paused or ended
+  const handleMaybeResumeAutoplay = () => {
+    // only start autoplay if NO video is playing
+    if (swiperRef.current && swiperRef.current.autoplay) {
+      if (!anyVideoPlaying()) {
+        try {
+          swiperRef.current.autoplay.start();
+        } catch (e) {
+          /* ignore */
+        }
+      } else {
+        // at least one video still playing -> keep autoplay stopped
+        try {
+          swiperRef.current.autoplay.stop();
+        } catch (e) {
+          /* ignore */
+        }
+      }
     }
   };
 
@@ -81,8 +109,8 @@ const Testimonials = () => {
                   controls
                   preload="metadata"
                   onPlay={() => handlePlay(index)}
-                  onPause={handlePause}
-                  onEnded={handlePause}
+                  onPause={handleMaybeResumeAutoplay}
+                  onEnded={handleMaybeResumeAutoplay}
                 >
                   <source src={video} type="video/mp4" />
                   Your browser does not support the video tag.
