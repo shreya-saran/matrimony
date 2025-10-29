@@ -85,7 +85,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-pink-200 mt-10 pt-5 text-center text-sm text-gray-500">
         © {new Date().getFullYear()}{" "}
-        <span className="text-teal-700 font-semibold">Elite Matrimony Breaue</span>. All rights reserved.
+        <span className="text-teal-700 font-semibold">Elite Matrimony Services</span>. All rights reserved.
       </div>
     </footer>
   );

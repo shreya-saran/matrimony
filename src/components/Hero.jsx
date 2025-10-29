@@ -31,7 +31,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-600 max-w-xl">
-            Sycorian brings experienced consultants and verified profiles together to deliver personalised matrimonial matchmaking across India and abroad - discreet, trustworthy, and client-first.
+            Elite Matrimony brings experienced consultants and verified profiles together to deliver personalised matrimonial matchmaking across India and abroad - discreet, trustworthy, and client-first.
           </p>
 
           {/* CTA Buttons */}
