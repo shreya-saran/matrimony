@@ -11,10 +11,12 @@ import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
 import SuccessStories from "./components/SuccessStories";
 import PrivacyPolicy from "./components/privacypolicy";
+import MatrimonyPopup from "./components/MatrimonyPopup";
 
 function App() {
   return (
     <BrowserRouter>
+      <MatrimonyPopup />
       <Navbar />
 
       <Routes>
@@ -24,7 +26,6 @@ function App() {
             <>
               <section id="home">
                 <HeroSection />
-                <RegistrationRow />
               </section>
 
               <section id="register">

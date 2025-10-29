@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -16,6 +16,30 @@ import v6 from "../assets/videos/v6.mp4";
 const videos = [v1, v2, v3, v4, v5, v6];
 
 const Testimonials = () => {
+  const swiperRef = useRef(null);
+  const videoRefs = useRef([]);
+
+  const handlePlay = (index) => {
+    // Stop all other videos
+    videoRefs.current.forEach((video, i) => {
+      if (i !== index && video && !video.paused) {
+        video.pause();
+      }
+    });
+
+    // Pause autoplay while a video is playing
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.stop();
+    }
+  };
+
+  const handlePause = () => {
+    // Resume autoplay when the video is paused
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.start();
+    }
+  };
+
   return (
     <section className="py-16 bg-gradient-to-b from-teal-50 to-pink-50 text-center">
       <h2 className="text-4xl font-bold text-teal-700 mb-12">
@@ -25,11 +49,12 @@ const Testimonials = () => {
       <div className="max-w-6xl mx-auto px-6">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
           spaceBetween={30}
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
-          loop={true} // ✅ keeps looping infinitely
+          loop={true}
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -51,18 +76,17 @@ const Testimonials = () => {
 
                 {/* Video */}
                 <video
+                  ref={(el) => (videoRefs.current[index] = el)}
                   className="w-full h-80 object-cover"
                   controls
                   preload="metadata"
+                  onPlay={() => handlePlay(index)}
+                  onPause={handlePause}
+                  onEnded={handlePause}
                 >
                   <source src={video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-
-                {/* Bottom Gradient Bar (Removed Testimonial number) */}
-                {/* <div className="bg-gradient-to-r from-pink-400 to-teal-400 py-3 text-white font-medium text-lg">
-                  Thank You For Your Love 💕
-                </div> */}
               </div>
             </SwiperSlide>
           ))}
