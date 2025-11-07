@@ -31,25 +31,28 @@ const COUNTRIES = [
 
 export default function CountriesGrid({
   heading = "Countries We Serve",
-  bg = "bg-gradient-to-b from-[#fdfbf8] to-[#fff5ee]",
+  // keep default section bg subtle and brand-consistent
+  bg = "bg-[#fef1f1]",
 }) {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section className={`${bg} py-14`}>
-      <div className="max-w-6xl mx-auto px-4 text-center">
+    <section className={`${bg} py-16`}>
+      <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-[#004d4d]">
+        <h2
+          className="text-3xl md:text-4xl font-bold"
+          style={{ color: "#924130" }} /* primary heading color */
+        >
           {heading}
         </h2>
+
+        {/* Divider — gradient from primary to accent */}
         <div
-          className="mx-auto mt-3 mb-8"
+          className="mx-auto mt-3 mb-10 w-32 h-1.5 rounded-full shadow-sm"
           style={{
-            width: 120,
-            height: 5,
-            borderRadius: 5,
-            background: "#009688",
-            opacity: 0.9,
+            background:
+              "linear-gradient(90deg, #924130 0%, #b85947 50%, #924130 100%)",
           }}
         />
 
@@ -59,19 +62,40 @@ export default function CountriesGrid({
             <div
               key={c.id}
               onClick={() => setSelected(c.id)}
-              className={`
-                flex flex-col items-center justify-center p-5 bg-white/80 backdrop-blur-md rounded-xl cursor-pointer transition-all duration-200
-                ${selected === c.id ? "ring-2 ring-teal-600 scale-105 shadow-lg" : "hover:ring-2 hover:ring-teal-500 hover:scale-105"}
-              `}
+              className={`flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer transition-all duration-300 ${
+                selected === c.id
+                  ? "scale-105 shadow-lg"
+                  : "hover:scale-105 hover:shadow-md"
+              }`}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") setSelected(c.id);
+              }}
             >
-              <div className="w-14 h-10 mb-3 overflow-hidden rounded-md shadow-sm">
+              <div
+                className="w-14 h-10 mb-3 overflow-hidden rounded-md shadow-sm"
+                style={{
+                  background: "#fff",
+                  border:
+                    selected === c.id ? "2px solid #b85947" : "1px solid #eee",
+                }}
+              >
                 <img
                   src={c.flag}
                   alt={c.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-base font-semibold text-[#004d4d]">{c.name}</p>
+
+              <p
+                className="text-base font-semibold"
+                style={{
+                  color: selected === c.id ? "#b85947" : "#924130",
+                }}
+              >
+                {c.name}
+              </p>
             </div>
           ))}
         </div>

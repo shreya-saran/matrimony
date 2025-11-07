@@ -12,12 +12,16 @@ import Testimonials from "./components/Testimonials";
 import SuccessStories from "./components/SuccessStories";
 import PrivacyPolicy from "./components/privacypolicy";
 import MatrimonyPopup from "./components/MatrimonyPopup";
+import CallbackButton from "./components/CallbackButton";
+import FloatingButtons from "./components/FloatingButtons";
+import NumberBanner from "./components/NumberBanner";
 
 function App() {
   return (
     <BrowserRouter>
       <MatrimonyPopup />
       <Navbar />
+      <CallbackButton />
 
       <Routes>
         <Route
@@ -26,6 +30,9 @@ function App() {
             <>
               <section id="home">
                 <HeroSection />
+              </section>
+              <section id="clients">
+                <ClientsMarquee />
               </section>
 
               <section id="register">
@@ -39,13 +46,17 @@ function App() {
               <section id="services">
                 <ServicesGrid />
               </section>
+              <section id="countries">
+                <CountriesGrid />
+              </section>
+
 
               <section id="testimonials">
                 <Testimonials />
               </section>
 
-              <section id="clients">
-                <ClientsMarquee />
+              <section id="numberbanner">
+                <NumberBanner />
               </section>
 
               <section id="contact">
@@ -53,6 +64,7 @@ function App() {
               </section>
 
               <Footer />
+              <FloatingButtons />
             </>
           }
         />

@@ -5,33 +5,51 @@ export default function MatrimonyPopup() {
   const PHONE = "+917838500048";
   const PLAIN_PHONE = "7838500048";
   const EMAIL = "sycoriaanteam@gmail.com";
-  const COMPANY = "elite matrimony services";
-  const ADDRESS =
-    "Safdarjung Enclave";
+  const COMPANY = "Elite Matrimony Services";
+  const ADDRESS = "Safdarjung Enclave";
 
   const [show, setShow] = useState(false);
 
+  // ✅ Show after 1s or when user scrolls to bottom
   useEffect(() => {
-    setTimeout(() => setShow(true), 1000); // show popup after 1s
+    const timer = setTimeout(() => setShow(true), 1000);
+
+    const handleScroll = () => {
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >=
+        document.body.scrollHeight - 50;
+      if (scrolledToBottom) {
+        setShow(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const handleClose = () => setShow(false);
 
   if (!show) return null;
 
+  // theme colors
+  const primary = "#924130"; 
+  const cream = "#FFF8E7";
+
   return (
     <>
-      {/* Background overlay for desktop */}
+      {/* Overlay for desktop */}
       <div
         className="hidden md:block fixed inset-0 z-40 bg-black/40"
         onClick={handleClose}
       ></div>
 
-      {/* Desktop centered popup */}
+      {/* Desktop Popup */}
       <div className="hidden md:flex fixed inset-0 z-50 items-center justify-center px-6">
         <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
           <div className="flex gap-4 p-6">
-            {/* ✅ Logo fully visible */}
             <img
               src={logo}
               alt="logo"
@@ -41,7 +59,10 @@ export default function MatrimonyPopup() {
             <div className="flex-1">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="text-xl font-semibold capitalize text-teal-700">
+                  <h3
+                    className="text-xl font-semibold capitalize"
+                    style={{ color: primary }}
+                  >
                     {COMPANY}
                   </h3>
                   <div className="flex items-center gap-2 mt-1">
@@ -64,19 +85,22 @@ export default function MatrimonyPopup() {
                   </div>
                 </div>
               </div>
+
               <p className="text-sm text-gray-600 mt-3">{PHONE}</p>
               <p className="text-sm text-gray-600 mt-3">{ADDRESS}</p>
 
               <div className="mt-5 flex flex-col gap-3 items-start">
                 <a
                   href={`tel:${PHONE}`}
-                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-full shadow-sm text-sm font-medium bg-teal-600 text-white hover:bg-teal-700 transition-all"
+                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-full shadow-sm text-sm font-medium text-white hover:opacity-90 transition-all"
+                  style={{ backgroundColor: primary }}
                 >
                   Call Now
                 </a>
                 <button
                   onClick={handleClose}
-                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-full shadow-sm text-sm font-medium bg-white text-teal-600 border border-teal-200 hover:bg-teal-50 transition-all"
+                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-full shadow-sm text-sm font-medium bg-white border border-gray-200 hover:bg-gray-50 transition-all"
+                  style={{ color: primary }}
                 >
                   Dismiss
                 </button>
@@ -86,10 +110,9 @@ export default function MatrimonyPopup() {
         </div>
       </div>
 
-      {/* Mobile popup */}
+      {/* Mobile Popup */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg rounded-t-2xl p-4 animate-slide-up">
         <div className="flex gap-3 items-start">
-          {/* ✅ Logo fully visible on mobile too */}
           <img
             src={logo}
             alt="logo"
@@ -99,7 +122,10 @@ export default function MatrimonyPopup() {
           <div className="flex-1">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-md font-semibold text-teal-700 capitalize">
+                <h4
+                  className="text-md font-semibold capitalize"
+                  style={{ color: primary }}
+                >
                   {COMPANY}
                 </h4>
                 <p className="text-xs text-gray-500 mt-0.5">{PLAIN_PHONE}</p>
@@ -122,18 +148,20 @@ export default function MatrimonyPopup() {
               </button>
             </div>
 
-            <p className="text-xs text-gray-600 mt-2 line-clamp-2">{ADDRESS}</p>
+            <p className="text-xs text-gray-600 mt-2">{ADDRESS}</p>
 
             <div className="mt-3 flex flex-col gap-2">
               <a
                 href={`tel:${PHONE}`}
-                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full text-sm font-medium bg-teal-600 text-white hover:bg-teal-700 transition-all"
+                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full text-sm font-medium text-white hover:opacity-90 transition-all"
+                style={{ backgroundColor: primary }}
               >
                 Call
               </a>
               <button
                 onClick={handleClose}
-                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full text-sm font-medium bg-white text-teal-600 border border-teal-200 hover:bg-teal-50 transition-all"
+                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-full text-sm font-medium bg-white border border-gray-200 hover:bg-gray-50 transition-all"
+                style={{ color: primary }}
               >
                 Dismiss
               </button>

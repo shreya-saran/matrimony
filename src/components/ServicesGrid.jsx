@@ -61,13 +61,14 @@ const SERVICES = [
 
 export default function ServicesGrid({ services = SERVICES }) {
   return (
-    <section className="py-16 bg-white">
+    // White section background; hidden on mobile
+    <section className="py-16 bg-white hidden md:block">
       <div className="max-w-6xl mx-auto px-4">
         <header className="text-center mb-12">
-          <h3 className="text-3xl font-extrabold text-[#0f1720]">
+          <h3 className="text-3xl font-extrabold text-[#8B0000]">
             Our Matrimony Divisions
           </h3>
-          <p className="mt-3 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="mt-3 text-[#b85947] max-w-2xl mx-auto text-sm sm:text-base">
             We bring together diverse communities under one trusted platform —
             explore specialized matrimony services that celebrate every culture,
             belief, and tradition.
@@ -78,7 +79,7 @@ export default function ServicesGrid({ services = SERVICES }) {
           {services.map((s) => (
             <article
               key={s.id}
-              className="rounded-2xl overflow-hidden bg-teal-50 border border-teal-100 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
+              className="rounded-2xl overflow-hidden bg-[#fef1f1] border border-[#E6BE8A]/50 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300"
             >
               <div className="h-48 w-full overflow-hidden">
                 <img
@@ -89,10 +90,10 @@ export default function ServicesGrid({ services = SERVICES }) {
                 />
               </div>
               <div className="p-5 text-center">
-                <h4 className="text-lg font-semibold text-[#0f1720] tracking-wide">
+                <h4 className="text-lg font-semibold text-[#8B0000] tracking-wide">
                   {s.title}
                 </h4>
-                <p className="mt-2 text-sm text-teal-700 font-medium">
+                <p className="mt-2 text-sm text-[#b85947] font-medium">
                   {s.subtitle}
                 </p>
               </div>
