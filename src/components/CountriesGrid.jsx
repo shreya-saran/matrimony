@@ -56,16 +56,14 @@ export default function CountriesGrid({
           }}
         />
 
-        {/* Country Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        {/* Country Grid: default/mobile = 3 cols, larger breakpoints unchanged */}
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {COUNTRIES.map((c) => (
             <div
               key={c.id}
               onClick={() => setSelected(c.id)}
-              className={`flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer transition-all duration-300 ${
-                selected === c.id
-                  ? "scale-105 shadow-lg"
-                  : "hover:scale-105 hover:shadow-md"
+              className={`flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer transition-all duration-300 select-none ${
+                selected === c.id ? "scale-105 shadow-lg" : "hover:scale-105 hover:shadow-md"
               }`}
               role="button"
               tabIndex={0}
@@ -77,15 +75,10 @@ export default function CountriesGrid({
                 className="w-14 h-10 mb-3 overflow-hidden rounded-md shadow-sm"
                 style={{
                   background: "#fff",
-                  border:
-                    selected === c.id ? "2px solid #b85947" : "1px solid #eee",
+                  border: selected === c.id ? "2px solid #b85947" : "1px solid #eee",
                 }}
               >
-                <img
-                  src={c.flag}
-                  alt={c.name}
-                  className="w-full h-full object-cover"
-                />
+                <img src={c.flag} alt={c.name} className="w-full h-full object-cover" />
               </div>
 
               <p

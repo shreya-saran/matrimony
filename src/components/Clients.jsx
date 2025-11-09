@@ -52,16 +52,16 @@ const ClientsMarquee = () => {
 
       <div className="relative w-full overflow-hidden">
         <div className="group">
-          <div className="flex animate-marquee gap-10 will-change-transform">
+          <div className="flex animate-marquee gap-12 will-change-transform">
             {logosDoubled.map((logo, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 w-36 h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 bg-gray-50 rounded-2xl shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                className="flex-shrink-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gray-50 rounded-2xl shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300"
               >
                 <img
                   src={logo}
                   alt={`Client logo ${i + 1}`}
-                  className="w-28 h-28 md:w-32 md:h-32 object-contain transition-transform duration-300 hover:scale-105"
+                  className="w-40 h-40 md:w-48 md:h-48 object-contain transition-transform duration-300 hover:scale-110"
                   loading="lazy"
                 />
               </div>

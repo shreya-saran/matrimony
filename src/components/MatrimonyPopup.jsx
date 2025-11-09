@@ -9,8 +9,6 @@ export default function MatrimonyPopup() {
   const ADDRESS = "Safdarjung Enclave";
 
   const [show, setShow] = useState(false);
-
-  // ✅ Show after 1s or when user scrolls to bottom
   useEffect(() => {
     const timer = setTimeout(() => setShow(true), 1000);
 
