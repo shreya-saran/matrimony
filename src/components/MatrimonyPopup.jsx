@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/logo.jpeg"; // update path if needed
+import logo from "../assets/logo.jpeg"; 
 
 export default function MatrimonyPopup() {
   const PHONE = "+917838500048";
@@ -9,8 +9,11 @@ export default function MatrimonyPopup() {
   const ADDRESS = "Safdarjung Enclave";
 
   const [show, setShow] = useState(false);
+
   useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 1000);
+    // Deliberately delay this popup a bit longer so it does NOT open at the same time
+    // as the LeadPopup that appears on site open. Adjust if you want it earlier/later.
+    const timer = setTimeout(() => setShow(true), 3500); // <-- changed from 1000 -> 3500
 
     const handleScroll = () => {
       const scrolledToBottom =
@@ -32,19 +35,19 @@ export default function MatrimonyPopup() {
 
   if (!show) return null;
 
-  // theme colors
+  
   const primary = "#924130"; 
   const cream = "#FFF8E7";
 
   return (
     <>
-      {/* Overlay for desktop */}
+      
       <div
         className="hidden md:block fixed inset-0 z-40 bg-black/40"
         onClick={handleClose}
       ></div>
 
-      {/* Desktop Popup */}
+      
       <div className="hidden md:flex fixed inset-0 z-50 items-center justify-center px-6">
         <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
           <div className="flex gap-4 p-6">

@@ -7,7 +7,6 @@ import ServicesGrid from "./components/ServicesGrid";
 import CountriesGrid from "./components/CountriesGrid";
 import ClientsMarquee from "./components/Clients";
 import HeroContactSection from "./components/Contact";
-
 import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
 import SuccessStories from "./components/SuccessStories";
@@ -16,6 +15,7 @@ import MatrimonyPopup from "./components/MatrimonyPopup";
 import CallbackButton from "./components/CallbackButton";
 import FloatingButtons from "./components/FloatingButtons";
 import NumberBanner from "./components/NumberBanner";
+import AutoPopup from "./components/AutoPopup";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
       <MatrimonyPopup />
       <Navbar />
       <CallbackButton />
+      <AutoPopup />
 
       <Routes>
         <Route
@@ -70,7 +71,7 @@ function App() {
           }
         />
 
-        {/* Privacy policy route */}
+        
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
     </BrowserRouter>
