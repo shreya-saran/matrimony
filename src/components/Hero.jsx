@@ -50,17 +50,16 @@ function TrustBadges({ className = "" }) {
     </div>
   );
 }
-
-/* Mobile-only hero card (replaces the photo grid on mobile) */
 function MobilePhotoHero({
   image = couples[0],
   title = "Elite Matrimony Bureau",
   subtitle = "Personalised matchmaking guided by experience",
 }) {
   return (
-    <div className="block lg:hidden pt-16 px-4">
-      <div className="relative overflow-hidden rounded-lg shadow-lg">
-        {/* background image */}
+    // ✅ Use -mx-6 to cancel parent padding and w-screen to force full width
+    <div className="block lg:hidden w-screen -mx-6 sm:-mx-10">
+      <div className="relative w-full overflow-hidden shadow-lg">
+        {/* background image - full width */}
         <img
           src={image}
           alt={`${title} — couple`}
@@ -77,17 +76,24 @@ function MobilePhotoHero({
           }}
         />
 
-        {/* centered logo near top and text near bottom */}
-        <div className="absolute inset-0 flex flex-col items-center justify-between px-4">
+        {/* centered logo and text */}
+        <div className="absolute inset-0 flex flex-col items-center justify-between">
           <div className="pt-4">
-            <img src={logo} alt="Elite Matrimony Bureau logo" className="w-20 sm:w-24 opacity-95 drop-shadow-lg" />
+            {/* <img
+              src={logo}
+              alt="Elite Matrimony Bureau logo"
+              className="w-20 sm:w-24 opacity-95 drop-shadow-lg"
+            /> */}
           </div>
 
-          <div className="pb-6 text-center">
-            <h2 className="text-lg sm:text-xl font-semibold tracking-widest" style={{ color: "#f0d9c9" }}>
+          <div className="pb-6 text-center px-3">
+            <h2
+              className="text-lg sm:text-xl font-semibold tracking-widest"
+              style={{ color: "#f0d9c9" }}
+            >
               {title}
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-white/90 font-medium max-w-xs mx-auto">
+            <p className="mt-1 text-sm sm:text-base text-white/90 font-medium max-w-xs mx-auto">
               {subtitle}
             </p>
           </div>
@@ -97,13 +103,14 @@ function MobilePhotoHero({
   );
 }
 
+
 export default function Hero() {
   const phone = "+91 78385 00048";
   const phoneDigits = "917838500048";
   const email = "sycoriaanteam@gmail.com";
 
   return (
-    <section className="bg-[#f9fafb] py-8 lg:py-14">
+    <section className="bg-[#f9fafb] pt-0 pb-8 lg:pt-14 lg:pb-14">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         {/* LEFT: headline & CTAs (unchanged) */}
         <div className="space-y-6 flex flex-col justify-center">
