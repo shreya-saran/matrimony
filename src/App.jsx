@@ -23,7 +23,9 @@ function App() {
       <MatrimonyPopup />
       <Navbar />
       <CallbackButton />
-      <AutoPopup />
+      <section id="popup">
+                <AutoPopup />
+              </section>
 
       <Routes>
         <Route

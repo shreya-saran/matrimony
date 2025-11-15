@@ -1,53 +1,74 @@
-import React, { useEffect, useState } from "react";
-import logo from "../assets/logo.jpeg"; 
+import React, { useEffect, useState, useRef } from "react";
+import logo from "../assets/logo.jpeg";
 
 export default function MatrimonyPopup() {
+  // contact / branding constants
   const PHONE = "+917838500048";
   const PLAIN_PHONE = "7838500048";
   const EMAIL = "sycoriaanteam@gmail.com";
   const COMPANY = "Elite Matrimony Services";
   const ADDRESS = "Safdarjung Enclave";
 
+  // UI state
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    // Deliberately delay this popup a bit longer so it does NOT open at the same time
-    // as the LeadPopup that appears on site open. Adjust if you want it earlier/later.
-    const timer = setTimeout(() => setShow(true), 3500); // <-- changed from 1000 -> 3500
+  // Refs for guards and throttling
+  const scrolledByUser = useRef(false); // becomes true when the user scrolls at all
+  const rafRef = useRef(null); // throttle via requestAnimationFrame
+  const shownRef = useRef(false); // ensures popup shows only once per page load
 
-    const handleScroll = () => {
-      const scrolledToBottom =
-        window.innerHeight + window.scrollY >=
-        document.body.scrollHeight - 50;
-      if (scrolledToBottom) {
+  useEffect(() => {
+    // Helper: are we at (or near) the bottom?
+    const isAtBottom = () =>
+      window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
+
+    const checkAndShow = () => {
+      if (scrolledByUser.current && isAtBottom() && !shownRef.current) {
+        shownRef.current = true;
         setShow(true);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const onScroll = () => {
+      // mark that a real user scroll happened
+      scrolledByUser.current = true;
+
+      // throttle repeated scroll events
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        checkAndShow();
+        rafRef.current = null;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Cleanup
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+  };
 
+  // If not showing, render nothing
   if (!show) return null;
 
-  
-  const primary = "#924130"; 
+  const primary = "#924130";
   const cream = "#FFF8E7";
 
   return (
     <>
-      
+      {/* backdrop for desktop */}
       <div
         className="hidden md:block fixed inset-0 z-40 bg-black/40"
         onClick={handleClose}
-      ></div>
+      />
 
-      
+      {/* Desktop modal */}
       <div className="hidden md:flex fixed inset-0 z-50 items-center justify-center px-6">
         <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
           <div className="flex gap-4 p-6">
@@ -66,6 +87,7 @@ export default function MatrimonyPopup() {
                   >
                     {COMPANY}
                   </h3>
+
                   <div className="flex items-center gap-2 mt-1">
                     <div className="flex items-center">
                       {[1, 2, 3, 4, 5].map((i) => (
@@ -85,6 +107,28 @@ export default function MatrimonyPopup() {
                     <span className="text-sm text-gray-500">4.0 (2k+)</span>
                   </div>
                 </div>
+
+                {/* Close button for desktop (optional) */}
+                <button
+                  onClick={handleClose}
+                  className="text-gray-400 hover:text-gray-600 ml-4"
+                  aria-label="Close popup"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
               </div>
 
               <p className="text-sm text-gray-600 mt-3">{PHONE}</p>
@@ -111,7 +155,7 @@ export default function MatrimonyPopup() {
         </div>
       </div>
 
-      {/* Mobile Popup */}
+      {/* Mobile bottom sheet */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg rounded-t-2xl p-4 animate-slide-up">
         <div className="flex gap-3 items-start">
           <img
@@ -131,6 +175,7 @@ export default function MatrimonyPopup() {
                 </h4>
                 <p className="text-xs text-gray-500 mt-0.5">{PLAIN_PHONE}</p>
               </div>
+
               <button onClick={handleClose} className="text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
-// Replace these with your EmailJS credentials
-const SERVICE_ID = "YOUR_SERVICE_ID";
-const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+
+const SERVICE_ID = "service_2ylk5jc";
+const TEMPLATE_ID = "template_i6cvtgb";
+const PUBLIC_KEY = "1yKAvhNz99bCFge-t";
 
 export default function LeadPopup() {
   const [open, setOpen] = useState(false);

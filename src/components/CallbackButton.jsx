@@ -2,7 +2,7 @@ import React from "react";
 
 const CallbackButton = () => {
   const handleClick = () => {
-    const contactSection = document.querySelector("#contact");
+    const contactSection = document.querySelector("#popup");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }

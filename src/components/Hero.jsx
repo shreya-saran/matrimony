@@ -162,7 +162,7 @@ export default function Hero() {
 
           {/* DESKTOP GRID (visible on lg and up) - unchanged visuals */}
           <div className="hidden lg:block">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 lg:pt-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 lg:pt-6">
               {couples.map((img, idx) => (
                 <article
                   key={idx}
