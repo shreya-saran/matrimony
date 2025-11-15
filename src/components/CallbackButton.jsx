@@ -1,43 +1,27 @@
+// src/components/CallbackButton.jsx
 import React from "react";
 
 const CallbackButton = () => {
   const handleClick = () => {
-    const contactSection = document.querySelector("#popup");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    // dispatch a custom event the popup listens for
+    window.dispatchEvent(new Event("open-lead-popup"));
+
+    // optional: keep the old behavior (scroll to #popup) — uncomment if needed
+    // const contactSection = document.querySelector("#popup");
+    // if (contactSection) contactSection.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
       <style>{`
         @keyframes pulseBounce {
-          0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-          }
-          25% {
-            transform: translateY(-3px) scale(1.05);
-            opacity: 0.95;
-          }
-          50% {
-            transform: translateY(0) scale(1.1);
-            opacity: 1;
-          }
-          75% {
-            transform: translateY(3px) scale(1.05);
-            opacity: 0.95;
-          }
-          100% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-          }
+          0% { transform: translateY(0) scale(1); opacity: 1; }
+          25% { transform: translateY(-3px) scale(1.05); opacity: 0.95; }
+          50% { transform: translateY(0) scale(1.1); opacity: 1; }
+          75% { transform: translateY(3px) scale(1.05); opacity: 0.95; }
+          100% { transform: translateY(0) scale(1); opacity: 1; }
         }
-
-        .cb-anim {
-          display: inline-block;
-          animation: pulseBounce 2s ease-in-out infinite;
-        }
+        .cb-anim { display: inline-block; animation: pulseBounce 2s ease-in-out infinite; }
       `}</style>
 
       <button

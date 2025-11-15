@@ -1,6 +1,6 @@
+// src/components/LeadPopup.jsx
 import React, { useEffect, useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-
 
 const SERVICE_ID = "service_2ylk5jc";
 const TEMPLATE_ID = "template_i6cvtgb";
@@ -16,17 +16,31 @@ export default function LeadPopup() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const popupRef = useRef(null);
+  const initedRef = useRef(false);
 
-  
+  // Init EmailJS once
   useEffect(() => {
-    const hasSeenPopup = localStorage.getItem("leadPopupSeen");
-    if (!hasSeenPopup) {
-      
-      setTimeout(() => setOpen(true), 1500);
+    if (!initedRef.current) {
+      try {
+        emailjs.init(PUBLIC_KEY);
+      } catch (err) {
+        console.warn("EmailJS init failed:", err);
+      }
+      initedRef.current = true;
     }
   }, []);
 
-  
+  // Auto-open logic (keeps existing behavior)
+  useEffect(() => {
+    const hasSeenPopup = localStorage.getItem("leadPopupSeen");
+    if (!hasSeenPopup) {
+      const t = setTimeout(() => setOpen(true), 1500);
+      return () => clearTimeout(t);
+    }
+    // no cleanup needed if already seen
+  }, []);
+
+  // Listen for outside clicks to close
   useEffect(() => {
     function handleClickOutside(e) {
       if (popupRef.current && !popupRef.current.contains(e.target)) {
@@ -39,24 +53,31 @@ export default function LeadPopup() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
+  // LISTEN to global event to open popup (fired by CallbackButton)
+  useEffect(() => {
+    const openHandler = () => {
+      setOpen(true);
+      // optionally clear previous success so form shows again
+      setSuccess(false);
+    };
+    window.addEventListener("open-lead-popup", openHandler);
+    return () => window.removeEventListener("open-lead-popup", openHandler);
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
     try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        {
-          user_name: formData.user_name,
-          relationship: formData.relationship,
-          mobile: formData.mobile,
-        },
-        PUBLIC_KEY
-      );
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+        user_name: formData.user_name,
+        relationship: formData.relationship,
+        mobile: formData.mobile,
+      });
       setSuccess(true);
       localStorage.setItem("leadPopupSeen", "true"); // Don’t show again next time
     } catch (err) {
@@ -67,10 +88,13 @@ export default function LeadPopup() {
     }
   };
 
+  const handleClose = () => setOpen(false);
+
   if (!open) return null;
 
   return (
     <div
+      id="popup"
       className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
       style={{ animation: "fadeIn 0.3s ease" }}
     >
@@ -81,7 +105,8 @@ export default function LeadPopup() {
         {/* Close button */}
         <button
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-          onClick={() => setOpen(false)}
+          onClick={handleClose}
+          aria-label="Close popup"
         >
           ✕
         </button>
@@ -170,7 +195,7 @@ export default function LeadPopup() {
               Our team will contact you shortly.
             </p>
             <button
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
               className="mt-5 px-4 py-2 bg-[#924130] text-white rounded-md"
             >
               Close

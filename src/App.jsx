@@ -24,10 +24,10 @@ function App() {
       <ScrollToTop />
       <MatrimonyPopup />
       <Navbar />
+      <AutoPopup />
       <CallbackButton />
-      <section id="popup">
-                <AutoPopup />
-              </section>
+      
+              
 
       <Routes>
         <Route

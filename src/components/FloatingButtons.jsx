@@ -9,7 +9,7 @@ const FloatingButtons = () => {
         {/* Call Button (left) */}
         <a
           href="tel:+917838500048"
-          className="bg-[#25D366] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-xl hover:scale-110 transition-transform duration-300"
+          className="bg-[#008CBA] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-xl hover:scale-110 transition-transform duration-300"
           aria-label="Call Us"
         >
           <FaPhoneAlt size={22} />
@@ -34,7 +34,7 @@ const FloatingButtons = () => {
         
         <a
           href="tel:+917838500048"
-          className="bg-[#25D366] text-white flex items-center gap-2 px-4 py-2 rounded-md shadow-md text-sm font-semibold hover:scale-105 transition-transform duration-300"
+          className="bg-[#008CBA] text-white flex items-center gap-2 px-4 py-2 rounded-md shadow-md text-sm font-semibold hover:scale-105 transition-transform duration-300"
           aria-label="Call Us"
         >
           <FaPhoneAlt size={16} />
