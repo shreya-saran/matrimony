@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
 
         <section className="prose prose-lg max-w-none mb-6">
           <p>
-            This Privacy Policy governs how <strong>Elite Matrimony Breaue</strong> ("the Company", "we", "us") 
+            This Privacy Policy governs how <strong>Elite Matrimony Bureau</strong> ("the Company", "we", "us") 
             collects, uses, discloses and safeguards the information provided by applicants to our matrimony services.
           </p>
 

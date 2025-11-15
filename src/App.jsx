@@ -16,10 +16,12 @@ import CallbackButton from "./components/CallbackButton";
 import FloatingButtons from "./components/FloatingButtons";
 import NumberBanner from "./components/NumberBanner";
 import AutoPopup from "./components/AutoPopup";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <MatrimonyPopup />
       <Navbar />
       <CallbackButton />
