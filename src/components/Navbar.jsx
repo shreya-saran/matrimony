@@ -147,13 +147,13 @@ export default function Navbar() {
             >
               Home
             </a>
-            <a
+            {/* <a
               href="/#services"
               onClick={() => setOpen(false)}
               className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
             >
               Services
-            </a>
+            </a> */}
             <a
               href="/#success"
               onClick={() => setOpen(false)}
