@@ -82,7 +82,7 @@ const Footer = () => {
             </li>
             <li>
               <p>
-                <strong>Phone:</strong> <a href="tel:+917838500048" style={{ color: "#b85947" }}>+91 7838500048</a>
+                <strong>Phone:</strong> <a href="tel:+919811333148" style={{ color: "#b85947" }}>+91 9811333148</a>
               </p>
             </li>
             <li>

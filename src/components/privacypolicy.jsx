@@ -100,7 +100,7 @@ const PrivacyPolicy = () => {
             <strong>Company name:</strong> Elite Matrimony Breaue
           </p>
           <p>
-            <strong>Contact:</strong> sycoriaanteam@gmail.com | +91 7838500048
+            <strong>Contact:</strong> sycoriaanteam@gmail.com | +91 9811333148
           </p>
           <p className="mt-6">
             If you have any questions about this Privacy Policy, please contact us at the above email address.

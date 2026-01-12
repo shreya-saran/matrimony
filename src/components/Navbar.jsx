@@ -3,8 +3,8 @@ import logo from "../assets/logo.jpeg";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const phoneDisplay = "+91 - 7838500048";
-  const phoneHref = "tel:+917838500048";
+  const phoneDisplay = "+91 - 9811333148";
+  const phoneHref = "tel:+91 9811333148";
 
   return (
     <header className="bg-[#fef1f1] shadow-md sticky top-0 z-50">
@@ -140,53 +140,46 @@ export default function Navbar() {
           } bg-[#fef1f1] border-t border-[#E6BE8A]/40`}
         >
           <div className="px-6 py-6 flex flex-col gap-4">
-            <a
-              href="#home"
-              onClick={() => setOpen(false)}
-              className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
+           <a
+              href="/#home"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition"
             >
               Home
             </a>
-            <a
+            {/* <a
               href="/#services"
-              onClick={() => setOpen(false)}
-              className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition"
             >
               Services
-            </a>
+            </a> */}
             <a
               href="/#success"
-              onClick={() => setOpen(false)}
-              className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition"
             >
               Success Stories
             </a>
             <a
               href="/#testimonials"
-              onClick={() => setOpen(false)}
-              className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition"
             >
               Testimonials
             </a>
             <a
               href="/#clients"
-              onClick={() => setOpen(false)}
-              className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition"
             >
               Clients
             </a>
             <a
               href="/#contact"
-              onClick={() => setOpen(false)}
-              className="text-lg text-[#8B0000] hover:text-[#CFA85C]"
+              className="text-lg font-medium text-[#8B0000] hover:text-[#CFA85C] transition"
             >
               Contact Us
             </a>
 
             <a
               href="/#register"
-              onClick={() => setOpen(false)}
-              className="mt-3 inline-flex justify-center items-center px-6 py-2 rounded-full bg-gradient-to-r from-[#CFA85C] to-[#E6BE8A] text-[#8B0000] font-semibold shadow hover:from-[#E6BE8A] hover:to-[#CFA85C] transition"
+              className="ml-4 inline-flex items-center px-6 py-2 rounded-full bg-gradient-to-r from-[#CFA85C] to-[#E6BE8A] text-[#8B0000] font-semibold shadow-md hover:shadow-lg hover:from-[#E6BE8A] hover:to-[#CFA85C] transition"
             >
               Register Now
             </a>

@@ -6,7 +6,7 @@ const CallUsBar = () => {
       {/* dotted overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(white_1px,transparent_1px)] bg-[length:16px_16px] opacity-10"></div>
       <div className="relative text-center text-lg md:text-xl">
-        Call us: <span className="font-bold">+91 - 7838500048</span>
+        Call us: <span className="font-bold">+91 - 9811333148</span>
       </div>
     </div>
   );
