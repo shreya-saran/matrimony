@@ -105,8 +105,8 @@ function MobilePhotoHero({
 
 
 export default function Hero() {
-  const phone = "+91 78385 00048";
-  const phoneDigits = "917838500048";
+  const phone = "+91 98113 33148";
+  const phoneDigits = "919811333148";
   const email = "sycoriaanteam@gmail.com";
 
   return (
