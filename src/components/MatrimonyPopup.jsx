@@ -3,8 +3,8 @@ import logo from "../assets/logo.jpeg";
 
 export default function MatrimonyPopup() {
   // contact / branding constants
-  const PHONE = "+917838500048";
-  const PLAIN_PHONE = "7838500048";
+  const PHONE = "+919811333148";
+  const PLAIN_PHONE = "9811333148";
   const EMAIL = "sycoriaanteam@gmail.com";
   const COMPANY = "Elite Matrimony Services";
   const ADDRESS = "Safdarjung Enclave";
