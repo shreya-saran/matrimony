@@ -294,7 +294,7 @@ export default function ContactSection() {
                   24/7 Support
                 </div>
                 <a href="tel:+917838500048" className="text-sm" style={{ color: "#b85947" }}>
-                  +91 - 7838500048
+                  +91 - 9811333148
                 </a>
               </div>
             </div>
