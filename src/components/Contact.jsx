@@ -293,7 +293,11 @@ export default function ContactSection() {
                 <div className="text-sm font-semibold" style={{ color: "#924130" }}>
                   24/7 Support
                 </div>
+<<<<<<< HEAD
                 <a href="tel:+919811333148" className="text-sm" style={{ color: "#b85947" }}>
+=======
+                <a href="tel:+917838500048" className="text-sm" style={{ color: "#b85947" }}>
+>>>>>>> 25605c7081bc293ab284a5d243e0e9f6f40728cb
                   +91 - 9811333148
                 </a>
               </div>

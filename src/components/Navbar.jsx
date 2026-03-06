@@ -4,7 +4,11 @@ import logo from "../assets/logo.jpeg";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const phoneDisplay = "+91 - 9811333148";
+<<<<<<< HEAD
   const phoneHref = "tel:+91 9811333148";
+=======
+  const phoneHref = "tel:+919811333148";
+>>>>>>> 25605c7081bc293ab284a5d243e0e9f6f40728cb
 
   return (
     <header className="bg-[#fef1f1] shadow-md sticky top-0 z-50">
